@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortAlgorithms", "SortAlgorithms\SortAlgorithms.csproj", "{5D03BB2C-6E76-4EB2-8D71-640125F22BCB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithm", "AlgorithmBase\Algorithm.csproj", "{DE39BE91-C244-4D7E-A237-0042B2DBFC4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmTests1", "AlgorithmTests1\AlgorithmTests1.csproj", "{B4C12F11-C218-4D64-8D03-8A7BE9721658}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{5D03BB2C-6E76-4EB2-8D71-640125F22BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D03BB2C-6E76-4EB2-8D71-640125F22BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D03BB2C-6E76-4EB2-8D71-640125F22BCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE39BE91-C244-4D7E-A237-0042B2DBFC4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE39BE91-C244-4D7E-A237-0042B2DBFC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE39BE91-C244-4D7E-A237-0042B2DBFC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE39BE91-C244-4D7E-A237-0042B2DBFC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4C12F11-C218-4D64-8D03-8A7BE9721658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4C12F11-C218-4D64-8D03-8A7BE9721658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4C12F11-C218-4D64-8D03-8A7BE9721658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4C12F11-C218-4D64-8D03-8A7BE9721658}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
