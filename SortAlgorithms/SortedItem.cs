@@ -22,6 +22,7 @@ namespace SortAlgorithms
             progressbar = new VerticalProgressBar();
             progressbar.Location = new Point(10 , 5);
             progressbar.Size = new Size(20, 105);
+            //progressbar.Name = "ProgressBar";
             //Controls.Add(pr);
             progressbar.Value = Value;
             //items.Add(value);
@@ -29,6 +30,7 @@ namespace SortAlgorithms
             label = new Label();
             label.Size = new Size(20, 13);
             label.Location = new Point(11, 110);
+            //label.Name = "Label" + number;
             label.Text = Value.ToString();
 
             //for (int i = 0; i < 20; i++)

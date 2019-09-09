@@ -32,13 +32,14 @@ namespace SortAlgorithms
             panel1.Controls.Add(item.progressbar);
             panel1.Controls.Add(item.label);
         }
-        public void Clear()
+        public void ClearControls()
         {
             (item.progressbar as Control).Dispose();
             Controls.Remove(item.progressbar as Control);
             (item.label as Control).Dispose();
             Controls.Remove(item.label as Control);
         }
+        //-----------------------------------------------------------
         private void button1_Click(object sender, EventArgs e)
         {
             ShowControls();
@@ -53,13 +54,14 @@ namespace SortAlgorithms
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            Clear();
+            ClearControls();
 
         }
 
-
-
-
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ShowControls();
+        }
     }
 
     //---------------------
