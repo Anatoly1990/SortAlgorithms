@@ -11,45 +11,57 @@ using Label = System.Windows.Forms.Label;
 namespace SortAlgorithms
 {
 
-    public class SortedItem
+    public class SortedItem:IComparable
     {
         public VerticalProgressBar progressbar { get; set; }
         public Label label { get; set; }
         public int Value { get; set; }
-        public SortedItem(int value)
+        public SortedItem(int value, int number)
         {
             Value = value;
+            var x = number * 22;
             progressbar = new VerticalProgressBar();
-            progressbar.Location = new Point(10 , 5);
+            progressbar.Location = new Point(10 +x, 5);
             progressbar.Size = new Size(20, 105);
-            //progressbar.Name = "ProgressBar";
-            //Controls.Add(pr);
+            progressbar.Name = "ProgressBar" + number;
             progressbar.Value = Value;
             //items.Add(value);
             //---------------
             label = new Label();
             label.Size = new Size(20, 13);
-            label.Location = new Point(11, 110);
-            //label.Name = "Label" + number;
+            label.Location = new Point(11+x, 110);
+            label.Name = "Label" + number;
             label.Text = Value.ToString();
+        }
+        public void SetPosition(int value)
+        {
+            Value = value;
+            progressbar.Value = value;
+            label.Text = Value.ToString();
+        }
+        public void SetColor(Color color)
+        {
+            progressbar.BackColor = color;
+        }
 
-            //for (int i = 0; i < 20; i++)
-            //{
-            //    progressbar = new VerticalProgressBar();
-            //    progressbar.Location = new Point(10 + (25 * i), 5);
-            //    progressbar.Size = new Size(20, 105);
-            //    //Controls.Add(pr);
-            //    progressbar.Value = Value;
-            //    //items.Add(value);
-            //    //---------------
-            //    label = new Label();
-            //    label.Size = new Size(20, 13);
-            //    label.Location = new Point(11 + (25 * i), 110);
-            //    label.Text = Value.ToString();
-            //    //Controls.Add(lb);
-            //}
+        public int CompareTo(object obj)
+        {
+            if (obj is SortedItem item)
+            { return Value.CompareTo(item.Value); }
+            else { throw new ArgumentException($"obj is not{nameof(SortedItem)}",nameof(obj)); }
+        }
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
+
+        public override int GetHashCode()
+        {
+            return Value;
         }
     }
+    
+
     public class VerticalProgressBar : ProgressBar
     {
         protected override CreateParams CreateParams

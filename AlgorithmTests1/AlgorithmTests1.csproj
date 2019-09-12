@@ -60,6 +60,7 @@
     <Compile Include="InsertSortTests.cs" />
     <Compile Include="KoktailSortTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShellSortTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

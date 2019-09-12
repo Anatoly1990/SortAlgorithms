@@ -20,8 +20,6 @@ namespace AlgorithmBase
                     var a = Items[i-1];
                     if (a.CompareTo(Items[i]) == 1)
                     {                      
-                        //Items[i - 1] = Items[i];
-                        //Items[i] = a;
                         Swap(i-1,i);
                     }                   
                 }
