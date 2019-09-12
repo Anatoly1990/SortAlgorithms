@@ -10,8 +10,7 @@ namespace Algorithm
     {
 
         public List<T> Items { get; set; } = new List<T>();
-        public event EventHandler<Tuple<T, T>> CompareEvent;
-        public event EventHandler<Tuple<T, T>> SwapEvent;
+
         public AlgorithmBase(IEnumerable<T> items)
         {
             Items.AddRange(items);
@@ -20,18 +19,15 @@ namespace Algorithm
         protected void Swap(int positionA, int positionB)
         {
             if (positionA < Items.Count && positionB < Items.Count)
-            {               
+            {
                 var temp = Items[positionA];
                 Items[positionA] = Items[positionB];
-                Items[positionB] = temp;
-                SwapEvent?.Invoke(this, new Tuple<T, T>(Items[positionA], Items[positionB]));
+                Items[positionB] = temp;                
             }
         }     
-        public virtual void Sort() { Items.Sort(); } 
-        protected int Compare(T a, T b)
+        public virtual void Sort()
         {
-            CompareEvent?.Invoke(this , new Tuple<T, T>(a,b));
-            return a.CompareTo(b);
+            Items.Sort();
         }
     }
 }

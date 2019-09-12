@@ -9,6 +9,8 @@ namespace AlgorithmBase
 {
    public class KoktailSort<T>:AlgorithmBase<T> where T:IComparable
     {
+        public KoktailSort(IEnumerable<T> items) { }
+        public KoktailSort() { }
         public override void Sort()
         {
             var left = 0;

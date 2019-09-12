@@ -9,6 +9,8 @@ namespace AlgorithmBase
 {
     public class InsertSort<T>:AlgorithmBase<T> where T:IComparable
     {
+        public InsertSort(IEnumerable<T> items) { }
+        public InsertSort() { }
         public override void Sort()
         {
             var count = Items.Count;

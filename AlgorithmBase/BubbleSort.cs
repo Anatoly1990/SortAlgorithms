@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Algorithm;
 
@@ -9,7 +10,7 @@ namespace AlgorithmBase
 {
     public class BubbleSort<T>:AlgorithmBase<T> where T : IComparable
     {
-        public BubbleSort(IEnumerable<T> items)  { } /*:base (items)*/ 
+        public BubbleSort(IEnumerable<T> items) { } /*:base (items)*/
         public BubbleSort() { }
         public override void Sort()
         {
@@ -21,11 +22,12 @@ namespace AlgorithmBase
                 {
                     var a = Items[i];
                     var b = Items[i + 1];
-                    if (Compare(a,b) == 1)
+                    if (a.CompareTo(b) == 1)
                     {
                         Swap(i, i + 1);
                     }
                 }
+                
             }
         }
     }
