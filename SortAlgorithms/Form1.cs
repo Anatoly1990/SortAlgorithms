@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Algorithm;
 using AlgorithmBase;
 using SortAlgorithms;
+using System.Diagnostics;
 
 namespace SortAlgorithms
 
@@ -25,7 +26,10 @@ namespace SortAlgorithms
         }   
 
         private void button2_Click(object sender, EventArgs e)
-        {           
+        {
+            var sw = new Stopwatch();
+            Thread.Sleep(1500);
+            sw.Start();
             var rnd = new Random();
             for (int i = 0; i < 20; i++)
             {
@@ -33,9 +37,9 @@ namespace SortAlgorithms
                 var item = new SortedItem(val);
                 items.Add(item);
                 SetProperty(label3, item);
-            }
-            Thread.Sleep(500);
+            }           
             //---------------
+            sw.Restart();
             var bubble = new BubbleSort<SortedItem>();
             bubble.Items.AddRange(items);
             bubble.Sort();
@@ -43,8 +47,10 @@ namespace SortAlgorithms
             {
                 SetProperty(label4, i);
             }
-            Thread.Sleep(500);
+            sw.Stop();
+            label4.Text += $"\t{sw.ElapsedMilliseconds.ToString()} мс";
             //----------------
+            sw.Restart();
             var coctail = new KoktailSort<SortedItem>();
             coctail.Items.AddRange(items);
             coctail.Sort();
@@ -52,9 +58,10 @@ namespace SortAlgorithms
             {
                 SetProperty(label5, i);
             }
-            Thread.Sleep(500);
-            coctail.Items.Clear();
+            sw.Stop();
+            label5.Text += $"\t{sw.ElapsedMilliseconds.ToString()} мс";
             //-----------------
+            sw.Restart();
             var insert = new InsertSort<SortedItem>();
             insert.Items.AddRange(items);
             insert.Sort();
@@ -62,16 +69,19 @@ namespace SortAlgorithms
             {
                 SetProperty(label6, i);
             }
-            Thread.Sleep(500);
+            sw.Stop();
+            label6.Text += $"\t  {sw.ElapsedMilliseconds.ToString()} мс";
             //----------------------
+            sw.Restart();
             var shell = new ShellSort<SortedItem>();
             shell.Items.AddRange(items);
             shell.Sort();
             foreach (var i in shell.Items)
             {
                 SetProperty(label7, i);
-            }           
-            Thread.Sleep(500);
+            }
+            sw.Stop();
+            label7.Text += $"\t{sw.ElapsedMilliseconds.ToString()} мс";
             //----------------------
             items.Clear();
 
