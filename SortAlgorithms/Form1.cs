@@ -12,20 +12,63 @@ using Algorithm;
 using AlgorithmBase;
 using SortAlgorithms;
 using System.Diagnostics;
+using System.CodeDom;
+using System.Reflection;
+using System.Collections;
+using System.Collections.Concurrent;
 
 namespace SortAlgorithms
 {
     public partial class Form1 : Form
     {
-        int size = 1000;
+        ArrayList l1 = new ArrayList() 
+        {
+            new BubbleSort<SortedItem>(),
+            new KoktailSort<SortedItem>(),
+            new InsertSort<SortedItem>(),
+            new ShellSort<SortedItem>(),
+            new QuickSort<SortedItem>(),
+        };
+
+        IList<Label> labels = new List<Label>();
+       
+        int size = 100;
         List<SortedItem> items = new List<SortedItem>();
         public Form1()
         {
             InitializeComponent();
-        }   
 
+            labels = new List<Label>() { label4 , label5, label6, label7, label13};
+            
+        }
         private async void button2_Click(object sender, EventArgs e)
         {
+            //Parallel.ForEach(l1.ToArray(),(item)=>
+            //{
+            //    var index = l1.IndexOf(item);
+            //    Type ty = item.GetType();
+            //    object x = Activator.CreateInstance(ty);
+            //    var items1 = ty.GetMethods();
+            //    var setItems = ty.GetMethod("set_Items");
+            //    var getItems = ty.GetMethod("get_Items");
+            //    var sort = ty.GetMethod("Sort");
+            //    setItems.Invoke(x,new object[] { items });
+
+            //    var sw = new Stopwatch();
+            //    sw.Start();
+            //    sort.Invoke(x, new object[] { });
+            //    sw.Stop();
+
+            //    var getRef = getItems.Invoke(x,new object[] { }) as List<SortedItem>;
+            //    var label = labels[index];
+            //    Action act = () => {
+            //        label.Text = GetValues(getRef)+ $" | {sw.ElapsedMilliseconds} мс";
+            //        label.Font = new Font("Tobota", 10, FontStyle.Bold);
+            //    };
+            //    label.Invoke(act);
+            //});
+
+
             await Task.Run(() =>
             {
                 var sw = new Stopwatch();
@@ -38,11 +81,11 @@ namespace SortAlgorithms
                 {
                     SetProperty(label4, i);
                 }
-                Action act = () => { label4.Text += $" | {sw.ElapsedMilliseconds} мс"; };
-                label4.Invoke(act);
+                label4.Invoke((MethodInvoker)(() => { label4.Text += $" | {sw.ElapsedMilliseconds} мс"; }));
             }).ConfigureAwait(false);
 
             //----------------
+
             await Task.Run(() =>
             {
                 var sw = new Stopwatch();
@@ -55,11 +98,11 @@ namespace SortAlgorithms
                 {
                     SetProperty(label5, i);
                 }
-                Action act = () => { label5.Text += $" | {sw.ElapsedMilliseconds} мс"; };
-                label5.Invoke(act);
+                label5.Invoke((MethodInvoker)(() => { { label5.Text += $" | {sw.ElapsedMilliseconds} мс"; } }));
             }).ConfigureAwait(false);
 
             //-----------------
+
             await Task.Run(() =>
             {
                 var sw = new Stopwatch();
@@ -72,11 +115,11 @@ namespace SortAlgorithms
                 {
                     SetProperty(label6, i);
                 }
-                Action act = () => { label6.Text += $" | {sw.ElapsedMilliseconds} мс"; };
-                label6.Invoke(act);
+                label6.Invoke((MethodInvoker)(() => { label6.Text += $" | {sw.ElapsedMilliseconds} мс"; }));
             }).ConfigureAwait(false);
 
             //----------------------
+
             await Task.Run(() =>
             {
                 var sw = new Stopwatch();
@@ -90,10 +133,11 @@ namespace SortAlgorithms
                     SetProperty(label7, i);
                 }
 
-                Action act = () => { label7.Text += $" | {sw.ElapsedMilliseconds} мс"; };
-                label7.Invoke(act);
+                label7.Invoke((MethodInvoker)(() => { label7.Text += $" | {sw.ElapsedMilliseconds} мс"; }));
             }).ConfigureAwait(false);
+
             //----------------------
+
             await Task.Run(() =>
             {
                 var sw = new Stopwatch();
@@ -107,12 +151,11 @@ namespace SortAlgorithms
                     SetProperty(label13, i);
                 }
 
-                Action act = () => { label13.Text += $" | {sw.ElapsedMilliseconds} мс"; };
-                label13.Invoke(act);
+                label13.Invoke((MethodInvoker)(() => { label13.Text += $" | {sw.ElapsedMilliseconds} мс"; }));
             }).ConfigureAwait(false);
 
             items.Clear();
-        }      
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -140,6 +183,16 @@ namespace SortAlgorithms
             };
 
             lb.Invoke(addParam);        
+        }
+
+        private string GetValues(List<SortedItem> items)
+        {
+            StringBuilder sb = new StringBuilder(); 
+            foreach (var item in items)
+            {
+                sb.Append(item.Value + "  ");
+            };
+            return sb.ToString();
         }
 
         private void button4_Click(object sender, EventArgs e)
